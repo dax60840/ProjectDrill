@@ -5,7 +5,6 @@ public class Eraser : MonoBehaviour
 {
     Texture2D texture;
     SpriteRenderer render;
-    public bool used = false;
     float scale;
     int res;
 
@@ -43,7 +42,6 @@ public class Eraser : MonoBehaviour
         
         tex.SetPixel((int)pixelUV.x, (int)pixelUV.y, Color.black);
         tex.Apply();
-        used = true;
     }
 }
 
