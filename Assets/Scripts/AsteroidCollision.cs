@@ -5,12 +5,14 @@ using DG.Tweening;
 public class AsteroidCollision : MonoBehaviour
 {
     public GameObject exitParticleSystem;
-    public float FadeTime = 0.2f;
+    public float FadeTimeIn = 0.2f;
+    public float FadeTimeOut = 0.2f;
     GameObject TopLayer;
     GameObject InnerLayer;
     Eraser eraser;
     MeshRenderer rend;
     float opacity = 1.0f;
+    public float rotationSpeed;
 
     void Start()
     {
@@ -18,16 +20,17 @@ public class AsteroidCollision : MonoBehaviour
         rend = TopLayer.GetComponent<MeshRenderer>();
         InnerLayer = transform.GetChild(1).gameObject;
         eraser = InnerLayer.GetComponent<Eraser>();
+        rotationSpeed = Random.Range(-rotationSpeed, rotationSpeed);
     }
 
     void Update()
     {
-
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z + rotationSpeed * Time.deltaTime );
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        DOTween.To(value => opacity = value, 1, 0, FadeTime).OnUpdate(() => { rend.material.SetFloat("_Opacity", opacity); });
+        DOTween.To(value => opacity = value, 1, 0, FadeTimeIn).OnUpdate(() => { rend.material.SetFloat("_Opacity", opacity); });
     }
 
     void OnTriggerStay2D(Collider2D col)
@@ -39,7 +42,6 @@ public class AsteroidCollision : MonoBehaviour
     {
         Vector3 direction = col.transform.position - transform.position;
         Instantiate(exitParticleSystem, col.transform.position, Quaternion.LookRotation(direction));
-
-        DOTween.To(value => opacity = value, 0, 1, FadeTime).OnUpdate(() => { rend.material.SetFloat("_Opacity", opacity); });
+        DOTween.To(value => opacity = value, 0, 1, FadeTimeOut).OnUpdate(() => { rend.material.SetFloat("_Opacity", opacity); });
     }
 }

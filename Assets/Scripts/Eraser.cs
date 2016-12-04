@@ -33,7 +33,6 @@ public class Eraser : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(player.transform.position, Vector3.forward, out hit);
-        Debug.Log(hit.textureCoord);
         Texture2D tex = texture;
         var pixelUV = hit.textureCoord;
         pixelUV.x *= tex.width;

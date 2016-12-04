@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 
         transform.position = (rb2D.position + velocity * Time.smoothDeltaTime);
 
-        if (!Input.anyKey) return;
+        //if (!Input.anyKey) return;
 
         Quaternion rot = transform.rotation;
         
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 
         direction = transform.rotation * Vector2.up;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1"))
         {
             velocity = direction * burstForce;
         }
