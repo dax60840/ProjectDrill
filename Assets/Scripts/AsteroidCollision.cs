@@ -9,13 +9,13 @@ public class AsteroidCollision : MonoBehaviour
     GameObject TopLayer;
     GameObject InnerLayer;
     Eraser eraser;
-    Renderer rend;
+    MeshRenderer rend;
     float opacity = 1.0f;
 
     void Start()
     {
         TopLayer = transform.GetChild(0).gameObject;
-        rend = TopLayer.GetComponent<Renderer>();
+        rend = TopLayer.GetComponent<MeshRenderer>();
         InnerLayer = transform.GetChild(1).gameObject;
         eraser = InnerLayer.GetComponent<Eraser>();
     }

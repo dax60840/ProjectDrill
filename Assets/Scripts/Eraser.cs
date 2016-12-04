@@ -4,16 +4,15 @@ using System.Collections;
 public class Eraser : MonoBehaviour
 {
     Texture2D texture;
-    SpriteRenderer render;
-    float scale;
+    Renderer render;
+    Vector2 scale;
     int res;
 
     void Start()
     {
-        scale = transform.parent.localScale.x;
-        res = (int)Mathf.Round(16 * scale);
-        render = GetComponent<SpriteRenderer>();
-        texture = new Texture2D(res, res);
+        scale = new Vector2(Mathf.Round(16 * transform.parent.localScale.x), Mathf.Round(16 * transform.parent.localScale.y));
+        render = GetComponent<Renderer>();
+        texture = new Texture2D((int)scale.x, (int)scale.y);
         // set texture in the inspector slot
         render.material.SetTexture("_SliceGuide", texture);
 
@@ -34,7 +33,7 @@ public class Eraser : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(player.transform.position, Vector3.forward, out hit);
-
+        Debug.Log(hit.textureCoord);
         Texture2D tex = texture;
         var pixelUV = hit.textureCoord;
         pixelUV.x *= tex.width;
