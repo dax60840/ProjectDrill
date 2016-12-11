@@ -42,19 +42,19 @@ public class AsteroidCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name != "LoadZone")
+        if (col.gameObject.name == "Player")
         DOTween.To(value => opacity = value, 1, 0, FadeTimeIn).OnUpdate(() => { rend.material.SetFloat("_Opacity", opacity); });
     }
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if(col.gameObject.name != "LoadZone")
+        if(col.gameObject.name == "Player")
         eraser.Erase(col.gameObject);
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.name != "LoadZone")
+        if (col.gameObject.name == "Player")
         {
             Vector3 direction = col.transform.position - transform.position;
             Instantiate(exitParticleSystem, col.transform.position, Quaternion.LookRotation(direction));
