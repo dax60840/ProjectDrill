@@ -450,5 +450,4 @@ Shader "Shader Forge/asteroidkimarche" {
         }
     }
     FallBack "Diffuse"
-    CustomEditor "ShaderForgeMaterialInspector"
 }

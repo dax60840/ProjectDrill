@@ -86,6 +86,8 @@
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\ParticleSystemAutoDestroy.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\ProceduralField.cs" />
+    <Compile Include="Assets\Scripts\ZoneLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\DOTween\DOTween.XML" />
@@ -94,6 +96,9 @@
     <None Include="Assets\DOTween\DOTween50.xml" />
     <None Include="Assets\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\DOTween\readme.txt" />
+    <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />
+    <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
+    <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
     <None Include="Assets\Shaders\3D shader.shader" />
     <None Include="Assets\Shaders\3D_Eraser_Shader.shader" />
     <None Include="Assets\Shaders\EraserShader.shader" />
