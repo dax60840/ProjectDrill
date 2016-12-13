@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/ArtistScene.unity
+=======
+- path: Assets/Scenes/ProceduralScene.unity
+>>>>>>> 6d47f3d3b5d405027fa3029429c66bb541988804
   isLoaded: 1
   isActive: 1

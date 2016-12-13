@@ -450,5 +450,4 @@ Shader "Shader Forge/Top Layer" {
         }
     }
     FallBack "Diffuse"
-    CustomEditor "ShaderForgeMaterialInspector"
 }

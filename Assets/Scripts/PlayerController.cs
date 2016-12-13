@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour {
 
@@ -7,6 +8,8 @@ public class PlayerController : MonoBehaviour {
     public float initialSpeed = 5f;
     public float rotationSpeed = 5f;
     public float burstForce = 50f;
+    public float strafeRange = 1f;
+    public float strafeSpeed = 5f;
 
     Rigidbody2D rb2D;
     Vector2 direction;
@@ -29,23 +32,40 @@ public class PlayerController : MonoBehaviour {
 
         transform.position = (rb2D.position + velocity * Time.smoothDeltaTime);
 
-        //if (!Input.anyKey) return;
+        if (Input.GetAxis("Horizontal") != 0)
+        {
 
-        Quaternion rot = transform.rotation;
-        
-        float z = rot.eulerAngles.z;
-        
-        z -= Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
-        
-        rot = Quaternion.Euler(0, 0, z);
-        
-        transform.rotation = rot;
+            Quaternion rot = transform.rotation;
 
-        direction = transform.rotation * Vector2.up;
+            float z = rot.eulerAngles.z;
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1"))
+            z -= Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
+
+            rot = Quaternion.Euler(0, 0, z);
+
+            transform.rotation = rot;
+
+            direction = transform.rotation * Vector2.up;
+
+        }
+
+        if (Input.GetButtonDown("Burst"))
         {
             velocity = direction * burstForce;
+        }
+
+        if(Input.GetButtonDown("Strafe Right"))
+        {
+            velocity += new Vector2 (direction.y, -direction.x) * strafeRange;
+            //delay = straffSpeed
+            velocity -= new Vector2(direction.y, -direction.x) * strafeRange;
+        }
+
+        if(Input.GetButtonDown("Strafe Left"))
+        {
+            velocity += new Vector2(-direction.y, direction.x) * strafeRange;
+            //delay = straffSpeed
+            velocity -= new Vector2(-direction.y, direction.x) * strafeRange;
         }
     }
 
