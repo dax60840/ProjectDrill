@@ -1,10 +1,11 @@
 ﻿<Properties StartupItem="ProjectDrill.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shaders\3D shader - Copie.shader">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader">
     <Files>
-      <File FileName="Assets\Scripts\AsteroidCollision.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AsteroidCollision.cs" Line="46" Column="1" />
       <File FileName="Assets\Shaders\3D shader.shader" Line="1" Column="1" />
       <File FileName="Assets\Shaders\3D shader - Copie.shader" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

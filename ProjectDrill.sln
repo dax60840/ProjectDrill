@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDrill.CSharp", "ProjectDrill.CSharp.csproj", "{B95F0C30-EFA9-3EF9-38EC-FB2583F88B8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDrill.Plugins", "ProjectDrill.Plugins.csproj", "{6B13323E-7B3D-FEE4-12B4-15253A157DE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDrill", "ProjectDrill.csproj", "{0DBCEE89-037A-54FD-B65D-1D770D9C8C09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDrill.Editor", "ProjectDrill.Editor.csproj", "{F29DB3FD-DA8A-510C-F81E-B9605EC96133}"
 EndProject
@@ -11,7 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-<<<<<<< HEAD
+		{6B13323E-7B3D-FEE4-12B4-15253A157DE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B13323E-7B3D-FEE4-12B4-15253A157DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B13323E-7B3D-FEE4-12B4-15253A157DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B13323E-7B3D-FEE4-12B4-15253A157DE4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0DBCEE89-037A-54FD-B65D-1D770D9C8C09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0DBCEE89-037A-54FD-B65D-1D770D9C8C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DBCEE89-037A-54FD-B65D-1D770D9C8C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -20,12 +25,6 @@ Global
 		{F29DB3FD-DA8A-510C-F81E-B9605EC96133}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F29DB3FD-DA8A-510C-F81E-B9605EC96133}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F29DB3FD-DA8A-510C-F81E-B9605EC96133}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
-		{B95F0C30-EFA9-3EF9-38EC-FB2583F88B8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B95F0C30-EFA9-3EF9-38EC-FB2583F88B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B95F0C30-EFA9-3EF9-38EC-FB2583F88B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B95F0C30-EFA9-3EF9-38EC-FB2583F88B8C}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> 6d47f3d3b5d405027fa3029429c66bb541988804
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
