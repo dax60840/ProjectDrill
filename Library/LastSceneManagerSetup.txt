@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/ArtistScene.unity
+- path: Assets/Scenes/ProceduralScene.unity
   isLoaded: 1
   isActive: 1
