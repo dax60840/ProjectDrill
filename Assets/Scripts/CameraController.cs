@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour {
     private Vector3 velocity = Vector3.zero;
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (myTarget != null)
         {

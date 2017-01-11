@@ -4,6 +4,7 @@ using DG.Tweening;
 
 public class PlayerController : MonoBehaviour {
 
+    public GameObject backRocket;
     public float drillSpeed = 5f;
     public float initialSpeed = 5f;
     public float rotationSpeed = 5f;
@@ -22,15 +23,17 @@ public class PlayerController : MonoBehaviour {
         velocity = direction * initialSpeed;
         drilling = false;
         rb2D = GetComponent<Rigidbody2D>();
-        rb2D.MovePosition(rb2D.position + velocity);
+    }
+
+    void FixedUpdate()
+    {
+        rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
     }
 
     void Update()
     {
         if (drilling)
             velocity = direction * drillSpeed;
-
-        transform.position = (rb2D.position + velocity * Time.smoothDeltaTime);
 
         if (Input.GetAxis("Horizontal") != 0)
         {
@@ -46,7 +49,8 @@ public class PlayerController : MonoBehaviour {
             transform.rotation = rot;
 
             direction = transform.rotation * Vector2.up;
-
+            
+            backRocket.transform.DORotate(transform.rotation.eulerAngles, 0.6f);
         }
 
         if (Input.GetButtonDown("Burst"))
@@ -54,6 +58,7 @@ public class PlayerController : MonoBehaviour {
             velocity = direction * burstForce;
         }
 
+        /*
         if(Input.GetButtonDown("Strafe Right"))
         {
             velocity += new Vector2 (direction.y, -direction.x) * strafeRange;
@@ -67,6 +72,7 @@ public class PlayerController : MonoBehaviour {
             //delay = straffSpeed
             velocity -= new Vector2(-direction.y, direction.x) * strafeRange;
         }
+        */
     }
 
     void OnTriggerEnter2D(Collider2D col)

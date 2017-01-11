@@ -23,6 +23,8 @@ public class AsteroidCollision : MonoBehaviour
         eraser = InnerLayer.GetComponent<Eraser>();
         rotationSpeed = Random.Range(-rotationSpeed, rotationSpeed);
 
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, Random.Range(-180f, 180f));
+
         //checking nearest asteroids
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, voidRadius);
         int i = 0;
@@ -48,8 +50,10 @@ public class AsteroidCollision : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if(col.gameObject.name == "Player")
-        eraser.Erase(col.gameObject);
+        if (col.gameObject.name == "Player")
+        {
+            eraser.Erase(col.gameObject);
+        }
     }
 
     void OnTriggerExit2D(Collider2D col)

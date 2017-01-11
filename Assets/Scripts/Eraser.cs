@@ -6,6 +6,7 @@ public class Eraser : MonoBehaviour
     Texture2D texture;
     Renderer render;
     Vector2 scale;
+    Rigidbody2D rb2D;
     int res;
 
     void Start()
@@ -31,8 +32,11 @@ public class Eraser : MonoBehaviour
 
     public void Erase(GameObject player)
     {
+        if (rb2D == null)
+            SetRB(player);
+
         RaycastHit hit;
-        Physics.Raycast(player.transform.position, Vector3.forward, out hit);
+        Physics.Raycast(rb2D.position, Vector3.forward, out hit);
         Texture2D tex = texture;
         var pixelUV = hit.textureCoord;
         pixelUV.x *= tex.width;
@@ -41,33 +45,9 @@ public class Eraser : MonoBehaviour
         tex.SetPixel((int)pixelUV.x, (int)pixelUV.y, Color.black);
         tex.Apply();
     }
-}
 
-
-    /*
-    // Update is called once per frame
-    void Update()
+    void SetRB(GameObject player)
     {
-
-        if (Input.touchCount == 0 && !Input.anyKey) return;
-
-        // Only if we hit something, do we continue
-        RaycastHit hit;
-        if (!Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward, out hit)) return;
-
-        // Just in case, also make sure the collider also has a renderer
-        // material and texture. Also we should ignore primitive colliders.
-        Renderer rend = hit.collider.GetComponent<Renderer>();
-        var meshCollider = hit.collider as MeshCollider;
-        if (rend == null || rend.sharedMaterial == null || texture == null || meshCollider == null) return;
-
-        // Now draw a pixel where we hit the object
-        Texture2D tex = texture;
-        var pixelUV = hit.textureCoord;
-        pixelUV.x *= tex.width;
-        pixelUV.y *= tex.height;
-
-        // add black spot, which is then transparent in the shader
-        tex.SetPixel((int)pixelUV.x, (int)pixelUV.y, Color.black);
-        tex.Apply();
-    }*/
+        rb2D = player.GetComponent<Rigidbody2D>();
+    }
+}
