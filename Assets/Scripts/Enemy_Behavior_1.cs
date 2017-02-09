@@ -6,12 +6,16 @@ public class Enemy_Behavior_1 : MonoBehaviour {
     
     public Enemy_Forward_1 forward;
     public float moveSpeed;
-    public float rotationSpeed;
+    public float rotationTime;
+    public float scaleAmplitude;
+    public float scaleTime;
     bool waiting;
+    bool scaleEnd;
 
 	// Use this for initialization
 	void Start () {
         waiting = false;
+        scaleEnd = true;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +27,7 @@ public class Enemy_Behavior_1 : MonoBehaviour {
             {
                 Vector3 direction = new Vector3(0f, 0f, Random.Range(transform.rotation.eulerAngles.z + 110f, transform.rotation.eulerAngles.z + 250f));
                 waiting = true;
-                transform.DORotate(direction, rotationSpeed).OnComplete(() => { waiting = false;});
+                transform.DORotate(direction, rotationTime).OnComplete(() => { waiting = false;});
             }
         }
         else
@@ -31,6 +35,27 @@ public class Enemy_Behavior_1 : MonoBehaviour {
             transform.position += transform.right * Time.deltaTime * moveSpeed;
         }
 
-	    
+        if (scaleEnd)
+        {
+            scaleEnd = false;
+            scaleMonster();
+        }
 	}
+
+    void scaleMonster()
+    {
+        transform.DOScale(transform.localScale.x + scaleAmplitude, scaleTime).OnComplete(
+            () => transform.DOScale(transform.localScale.x - scaleAmplitude, scaleTime).OnComplete(
+                () => scaleEnd = true
+                )
+            );
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.transform.tag == "Player")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

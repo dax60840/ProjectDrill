@@ -12,6 +12,7 @@ public class ProceduralField : MonoBehaviour {
     public float yOrg;
     public float scale = 1.0F;
     public float ceil = 0.8f;
+    public float scaleRange = 0.1f;
 
     void Start()
     {
@@ -35,7 +36,8 @@ public class ProceduralField : MonoBehaviour {
                     GameObject temp = Instantiate(AsteroidList[index].gameObject);
                     temp.transform.parent = transform;
                     temp.transform.position = new Vector3(x, y, 0.1f);
-
+                    float rand = Random.Range(-scaleRange, scaleRange);
+                    temp.transform.localScale = new Vector3(temp.transform.localScale.x + rand, temp.transform.localScale.y + rand, temp.transform.localScale.z);
                 }
                 x++;
             }

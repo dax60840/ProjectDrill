@@ -4,6 +4,7 @@ using DG.Tweening;
 
 public class AsteroidCollision : MonoBehaviour
 {
+    public GameObject monster;
     public GameObject exitParticleSystem;
     public float FadeTimeIn = 0.2f;
     public float FadeTimeOut = 0.2f;
@@ -35,6 +36,10 @@ public class AsteroidCollision : MonoBehaviour
                 Destroy(temp.transform.parent.gameObject);
             i++;
         }
+        
+        var mob = Instantiate(monster, transform.position, Quaternion.identity);
+        mob.transform.parent = InnerLayer.transform;
+        mob.transform.localPosition = new Vector3(mob.transform.localPosition.x, mob.transform.localPosition.y, 0);
     }
 
     void Update()
@@ -58,7 +63,7 @@ public class AsteroidCollision : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.name == "Player")
+        if (col.gameObject.name == "DrillTop")
         {
             Vector3 direction = col.transform.position - transform.position;
             Instantiate(exitParticleSystem, col.transform.position, Quaternion.LookRotation(direction));
