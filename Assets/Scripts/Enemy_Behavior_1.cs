@@ -55,7 +55,9 @@ public class Enemy_Behavior_1 : MonoBehaviour {
     {
         if(col.transform.tag == "Player")
         {
-            Destroy(this.gameObject);
+            waiting = true;
+            scaleEnd = false;
+            transform.DOScale(0f, 0.2f).OnComplete(() => Destroy(gameObject));
         }
     }
 }
